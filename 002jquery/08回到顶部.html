@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> return up</title>
+    <style> 
+        #box{
+            width: 50px;    
+            height: 50px;   
+            background-color: #cfc;
+            position: fixed;
+            top: 550px;
+            left:1200px;  
+            text-align: center;  
+        }
+        #body{
+            height: 2000px;  
+        }
+    </style>
+    <script src="jquery-1.6.1.min.js"></script>
+    <script>
+        $(function(){
+           
+            $("#box").click(function(){
+                 //方法一 直接回到顶部
+                // $("body,html").scrollTop(0);
+           
+            // 方法二 平滑的回到顶部
+            // 设置定时器
+            clearInterval(timer);
+            $page=$("html,body")
+            var alltime=500;   //总时间
+            var intervalTime=30;   //间隔时间
+            var distances=$("body").scrollTop()+$("html").scrollTop();
+            var itemdistances=distances/(alltime/intervalTime);
+            // 计算滚动条距离顶部的距离
+            // 当scrollTop为0时结束
+            
+            var timer=setInterval(function(){
+                distances-=itemdistances;
+                if(distances<=0){
+                    distances=0;
+                    clearInterval(timer);
+
+                }
+                $page.scrollTop(distances);
+            },intervalTime)
+             })
+        });
+    </script>
+</head>
+<body id="body">
+    <div id="box">return up</div>
+</body>
+</html>

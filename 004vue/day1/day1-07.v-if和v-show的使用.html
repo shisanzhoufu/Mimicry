@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if和v-show的使用</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+
+        <!-- v-if每次切换都会删除或添加元素，如果只是有一次，建议使用v-if，否则会造成较高的性能消耗。
+        v-show则是添加display：none   会在初次渲染页面时被多渲染一个H3，有较高的渲染消耗，因此只有在多次使用切换时，建议使用 -->
+        
+        <input type="button" value="切换" @click="flag=!flag">
+        <!-- <input type="button" value="切换" @click="toggle"> -->
+
+        <h3 v-if="flag">这是v-if</h3>
+        <h3 v-show="flag">这是v-show</h3>
+
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                flag:true
+            },
+            methods:{
+                /*toggle(){
+                    this.flag=!this.flag
+                }*/
+            }
+        });
+    </script>
+</body>
+</html>

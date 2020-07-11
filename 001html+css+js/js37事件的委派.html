@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件的委派</title>
+    <style>
+        ul{
+            background-color: #cfc;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var ul=document.getElementById("ul");
+            var btn=document.getElementById("btn");
+
+            // 为按钮绑定一个单击相应函数实现超链接的添加
+            btn.onclick=function(){
+               var li=document.createElement("li");
+               li.innerHTML="<a href='javascript:;' class=link> 新增超链接</a>";
+               ul.appendChild(li);
+            }
+
+            // 为ul绑定单击相应函数
+            // 根据事件的冒泡，单击li时会触发父元素ul的事件
+            // 不需要遍历li事件再单独绑定事件，新增的超链接具有同样的效果
+            ul.onclick=function(event){
+
+                // 因为绑定的时ul
+                // 所以单击ul内所有都会相应，添加一个判断，使只有点击链接时才相应
+                if(event.target.className=="link"){
+                    alert("hi!!!");
+                }
+                
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="btn">添加链接</button>
+    <ul id="ul">
+        <li><a href="javascript:;" class=link>超链接一</a></li>
+        <li><a href="javascript:;"class=link>超链接二</a></li>
+        <li><a href="javascript:;"class=link>超链接三</a></li>
+    </ul>
+</body>
+</html>

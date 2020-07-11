@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组</title>
+<!--     <script>
+var arr=["jack","tom","rose","jan"];
+  /* 数组的四个方法
+var result=arr.unshift("mary");
+var result=arr.push("mary");
+var result=arr.pop();
+var result=arr.shift();
+console.log(result);*/
+//数组的遍历
+for(var i=0;i<arr.length;i++){
+ console.log(arr[i]);
+}  
+</script> -->
+<script>//数组综合练习
+//创建一个构造函数
+    function ArrPerson(name,age){
+        this.name=name;
+        this.age=age;
+    }
+    //
+    ArrPerson.prototype.toString = function () {
+        return "name:"+this.name+",age:"+this.age;
+    };
+    var per= new ArrPerson("jack",18);
+    var per2= new ArrPerson("rose",8);
+    var per3= new ArrPerson("tom",28);
+    var per4= new ArrPerson("jan",48);
+    
+    //将person对象都放入一个数组
+    var perarr=[per,per2,per3,per4];
+
+    console.log(perarr);
+
+    function getAdult(arr){
+        //创建一个新数组
+        
+        var newArr=[];
+
+        //遍历数组
+        for(var i=0;i<arr.length;i++){
+           var p=arr[i];
+           
+           //取出大于18的元素，添加到新数组的末尾
+            if(p.age>=18){
+                 newArr.push(p);
+                 
+        }
+   
+        }    //返回新的数组
+             return newArr;
+    }
+    var result=getAdult(perarr);
+    console.log(result);
+</script>
+</head>
+<body>
+    
+</body>
+</html>

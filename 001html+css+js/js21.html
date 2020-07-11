@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this</title>
+    <script>
+        function fun(){
+            console.log(this);
+        }
+        var obj={
+            name:"jack",
+            age:"20",
+            sayName:fun
+        };
+     obj.sayName();
+        //   fun();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

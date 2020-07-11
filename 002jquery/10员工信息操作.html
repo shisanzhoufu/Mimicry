@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>员工信息操作</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #table1{
+            border-collapse: collapse;    
+            margin: 0 auto;
+            border: 1px solid black;
+            margin-top: 50px;     
+        }
+       #table1 tr td{
+        padding: 5px;
+        border: 1px solid black;
+        text-align: left;
+  }
+   #table1 tr th{
+        padding: 5px;
+        border: 1px solid black;
+        text-align: left;
+  }
+
+  #table2{
+    border-collapse: collapse;  
+    margin: 0 auto;
+    margin-top: 50px;
+    border: 1px solid black;
+    text-align: center;
+  }
+    #table2 tr td{
+        padding: 5px;
+  }
+    </style>
+</head>
+<body>
+     <table id="table1">
+            <tr>
+            <th>name</th>
+            <th>email</th>
+            <th>salary</th>
+            <th></th>
+        </tr>
+        <tbody>
+            <tr>
+            <td>tom</td>
+            <td>12324@qq.com</td>
+            <td>3000</td>
+            <td><a href="">delete</a></td>
+        </tr>
+                <tr>
+            <td>jack</td>
+            <td>8888324@qq.com</td>
+            <td>8000</td>
+            <td><a href="">delete</a></td>
+        </tr>
+                <tr>
+            <td>rose</td>
+            <td>123243324@qq.com</td>
+            <td>30000</td>
+            <td><a href="">delete</a></td>
+        </tr>
+                <tr>
+            <td>mary</td>
+            <td>123er3224@qq.com</td>
+            <td>32000</td>
+            <td><a href="">delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+   <table id="table2">
+    <tr>
+        <td> <p>添加一个新员工</p>
+        </td>
+        </tr>
+        <tr>
+            <td> name:
+            <input type="text" id="tex1">
+        </td>
+       </tr>
+       <tr>
+            <td> email:
+           <input type="text" id="tex2">
+       </td>
+       </tr>
+       <tr>
+            <td> salary:
+           <input type="text" id="tex3">
+       </td>
+       </tr>
+       <tr>
+           <td><button id="btn">提交</button>
+           </td>
+       </tr>
+   </table>
+
+
+    <script src="jquery-1.6.1.min.js"></script>
+    <script>
+        $("#btn").click(function(){
+            var $empname=$("#tex1");
+            var $empemail=$("#tex2");
+            var $empsalary=$("#tex3");
+            var name=$empname.val();
+            var email=$empemail.val();
+            var salary=$empsalary.val();
+
+            $("<tr> </tr>")
+            .append("<td>"+name+"</td>")
+            .append("<td>"+email+"</td>")
+            .append("<td>"+salary+"</td>")
+            .append("<td><a href='#'"+Date.now()+">delete</a></td>")
+            .appendTo("#table1>tbody")
+            $empname.val("");
+        $empemail.val("");
+        $empsalary.val("");
+        })
+        
+    </script>
+</body>
+</html>

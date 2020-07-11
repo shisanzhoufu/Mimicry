@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件的绑定</title>
+    <script>
+        window.onload=function(){
+            var btn=document.getElementById("btn");
+            bind(btn,"click",function(){alert(1);})
+             bind(btn,"click",function(){alert(2);})
+               function bind(obj,eventStr,callback){
+            if(obj.addEventListener){
+                obj.addEventListener(eventStr,callback,false)
+            }else{
+                obj.attachEvent("on"+eventStr,function(){
+                    callback.call(obj);
+                });
+            }
+        }
+        }
+    </script>
+</head>
+<body>
+    <button id="btn">按钮</button>
+</body>
+</html>

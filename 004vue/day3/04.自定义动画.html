@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义动画</title>
+    <script src="./lib/vue.js"></script><style>
+        /* 这是一个时间点，还没有进入动画 */
+        .p-enter,
+        /* 动画离开之后，元素动画已经结束 */
+        .p-leave-to{
+            opacity: 0;
+            transform: translateX(200px);
+        }
+        /* 是时间段，入场动画从开始到完成 */
+        .p-enter-active,
+        /* 时间段，离开到结束 */
+        .p-leave-active{
+            transition: all 0.8s ease;
+        }
+
+        .my-enter,
+        .my-leave-to{
+            opacity: 0;
+            transform: translateY(70px);
+        }
+        .my-enter-active,
+        .my-leave-active{
+            transition: all 0.8s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+    <input type="button" value="添加" @click="flag=!flag">
+    <transition name="my" mode=""> 
+        <h3 v-if="flag">这是一个h3</h3>
+    </transition>
+<p>----------------------------------------------------</p>
+    <input type="button" value="添加" @click="flag2=!flag2">
+    <transition name="p" >
+        <h6 v-if="flag2">这是一个h6</h6>
+    </transition>
+    </div>
+    <script>
+        var vm=new Vue({
+           el:'#app',
+           data:{
+            flag:false,
+            flag2:false
+           },
+           methods:{}
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取元素的三种方法</title>
+</head>
+<body>
+    <button id="pid">anniu</button>
+    <ul name="li1">
+        <li  name="li1">北京</li>
+        <li>上海</li>
+        <li>重庆</li>
+    </ul>
+    <script>
+        var btn=document.getElementById('pid');
+        btn.onclick=function(){
+            alert(btn.innerHTML);
+        };
+        var lit=document.getElementsByTagName('li');
+            for(var i=0;i<lit.length;i++){
+                alert(lit[i].innerHTML);
+            }
+    </script>
+</body>
+</html>

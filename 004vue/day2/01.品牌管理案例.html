@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>品牌管理案例</title>
+    <script src="lib/vue.js"></script>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        #header{
+            border-radius: 20px;
+              border: 1px solid #ccc;
+        }
+        .add{
+            height: 50px;
+            background-color: #ccc;
+        }
+        #contant{
+            
+            height: 50px;
+          
+        }
+        #form{
+            margin-left: 30px;
+            margin-top: 20px;
+        }
+        #addId,#addName, #search {
+            height: 23px;
+        }
+        #addBtn {
+            line-height: 23px;
+            width: 35px;
+        }
+ table
+  {
+  border-collapse:collapse;
+
+  }
+
+table,th, td
+  {
+  border: 1px solid #ccc;
+  padding: 10px;
+  padding-right: 70px;
+  }
+footer{
+    color: red;
+
+}
+    </style>
+
+</head>
+<body>
+    <div id="app">
+
+        <div id="header"><p class="add">添加品牌</p>
+        <div id="contant">
+            <form action="" id="form">
+                Id: <input type="text" id="addId" v-model="id">
+
+                Name: <input type="text" id="addName" v-model="name"  @keyup.enter="add"> 
+
+                <input type="button" value="添加" id="addBtn" @click="add()">
+                搜索内容关键字：<input type="text"  id="search" v-model="keywords" v-focus v-color="'blue'"> 
+            </form>
+        </div></div>
+        
+        <div id="tabledd">
+            <table id="tab">
+                <tr>
+                    <th class="idt">Id</th>
+                    <th class="namet">品牌名称</th>
+                    <th class="timet">添加时间</th>
+                    <th class="deletet">操作</th>
+                </tr>
+                <tr v-for="item in search(keywords)" :key="item.id">
+                    <td v-cloak>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.time | dateFormat}}</td>
+                    <td><a href="" @click.prevent="del(item.id)">删除</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="app2">
+        <h3  v-color="'pink'" v-fontweight="100" v-fontsize="'30px'">{{dt|dateFormat}}</h3>
+     </div>
+
+    <script>
+
+        // 全局过滤器
+        Vue.filter('dateFormat',function(dateStr){
+            var dt=new Date(dateStr)
+
+            var y=dt.getFullYear().toString().padStart(2,'0')
+            var m=(dt.getMonth()+1).toString().padStart(2,'0')
+            var d=dt.getDate().toString().padStart(2,'0')
+
+            return `${y}-${m}-${d}`
+        })
+        // 定义一个全局指令,参数一是指令名称，使用时要在之前加V-
+        //参数2是对象
+        Vue.directive('focus',{
+            bind:function(el){//每当绑定到元素上的时候，会立即执行bind函数
+            
+            },
+            inserted:function(el){//元素插入到dom中的时候，会执行这个函数1次
+                el.focus()
+            },
+            updated:function(){//当VNode更新时，会执行这个函数，可能会触发多次
+            }
+        })
+
+        //自定义一个设置字体颜色字体
+        Vue.directive('color',{
+            bind:function(el,binding){
+                // el.style.color='red'
+                el.style.color=binding.value
+                }
+        })
+
+        var vm=new Vue({
+
+            el:'#app',
+        data:{
+            list:[
+            {id:"1",name:"奔驰",time: new Date()},
+            {id:"2",name:"宝马",time: new Date()},
+            {id:"3",name:"奥迪",time: new Date()}
+            ],
+            id:'',
+            name:'',
+            keywords:''
+        },
+        methods:{
+            add(){
+                var car={id:this.id, name:this.name, time: new Date()}
+                this.list.push(car)
+                this.id=this.name=''
+            },
+            del(id){
+                this.list.some((item,i)=>{
+                    if(item.id==id){
+                       
+                        this.list.splice(i,1)
+                         return true;
+                    }
+                })
+            },
+            search(keywords){
+                var newList=[]
+                this.list.forEach(item => {
+                    if(item.name.indexOf(keywords)!= -1){
+                        newList.push(item)
+                    }
+                })
+                return newList
+            }
+        }
+        });
+
+        // 自定义一个私有的过滤器
+        var vm2=new Vue({
+            el:'#app2',
+            data:{ 
+                dt:new Date()
+            },
+            methods:{},
+            filters:{//定义私有过滤器  【过滤器名称 和处理函数】
+                dateFormat:function(dateStr,pattern=''){
+                  var dt=new Date(dateStr)
+
+                  var y=dt.getFullYear().toString().padStart(2,'0')
+                  var m=(dt.getMonth()+1).toString().padStart(2,'0')
+                  var d=dt.getDate().toString().padStart(2,'0')
+
+            return `${y}-${m}-${d}`
+                }
+            },
+            directives: {//定义一个私有指令
+                'fontweight':{
+                    bind:function(el,binding){
+                        el.style.fontWeight=binding.value
+                    }
+                }
+            },
+            //指令简写
+            directives: {
+                'fontsize':function(el,binding){
+                    el.style.fontsize=parseInt(binding.value)
+                }
+            }
+        
+        });
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div> <button id="btn">按钮</button></div>
+<!--     <script>//0级事件处理程序
+   var btn=document.getElementById("btn");
+   btn.onclick=function (){ //被覆盖
+    alert("111");
+   }
+   btn.onclick=function (){
+    alert("112");
+   }
+</script> -->
+<!-- <script>//2级事件处理程序
+   var btn=document.getElementById("btn");
+   btn.addEventListener("click",demo1);
+   btn.addEventListener("click",demo2);
+   btn.addEventListener("click",demo3);
+    function demo1(){
+        alert("221");
+    }
+     function demo2(){
+        alert("222");
+    }
+     function demo3(){
+        alert("223");
+    }
+    btn.removeEventListener("click",demo3);//移除demo3
+</script> -->
+<script>
+</script>
+</body>
+</html>

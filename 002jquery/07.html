@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格隔行变色</title>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        table,th,td{
+            border: 1px solid black;
+            height: 50px;
+            width: 360px;
+            }
+        th{
+            background-color:green;
+        }
+    </style>
+    <script src="jquery-1.6.1.min.js"></script>
+    <script>
+       $(function(){
+        $("#tab>tbody>tr:odd").css("background","#cfc");
+       });
+    </script>
+</head>
+<body>
+<table id="tab">
+    <thead>
+        <tr>
+         <th></th>
+         <th></th>
+         <th></th>
+         <th></th>
+    </tr>
+    </thead>
+    
+    <tbody>
+         <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+   <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody>
+   
+</table>
+</body>
+</html>

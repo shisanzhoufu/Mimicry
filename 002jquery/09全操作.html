@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全选操作</title>
+</head>
+<body>
+     你爱好的运动是：
+    <input type="checkbox" id="ck">全选/全不选
+    <br/>
+    <input type="checkbox" name="items" value="足球"  id="ck1">足球
+    <input type="checkbox"name="items" value="篮球" id="ck2">篮球
+    <input type="checkbox" name="items"value="排球" id="ck3">排球
+    <input type="checkbox" name="items"value="羽毛球" id="ck4">羽毛球
+    <br/>
+    <button id="btn1">全选</button>
+    <button id="btn2">全不选</button>
+    <button id="btn3">反选</button>
+    <button id="btn4">提交</button>
+
+
+    <script src="jquery-1.6.1.min.js"></script>
+    <script>
+        var $checkedAllbox=$("#ck"); //全选/全不选按钮
+        var $items=$(":checkbox[name=items]");
+
+        // 点击全选，选中全部爱好
+        $("#btn1").click(function(){
+            $items.prop("checked",true);
+            $checkedAllbox.prop("checked",true);
+        })
+        // 点击全不选，所有爱好都不勾选
+        $("#btn2").click(function(){
+            $items.prop("checked",false);
+            $checkedAllbox.prop("checked",false);
+        })
+        // 反选按钮
+        $("#btn3").click(function(){
+            $items.each(function(){
+                this.checked=!this.checked;
+                 $checkedAllbox.prop("checked",$items.filter(":not(:checked)").length===0);
+            })
+       
+        })
+        // 提交
+         $("#btn4").click(function(){
+            $items.filter(":checked").each(function(){
+                alert(this.value);
+            })
+        })
+         //全选全不选键
+          $checkedAllbox.click(function(){
+            $items.prop("checked",this.checked);
+          })
+          //根据选择情况更新全选全不选键
+           $items.click(function(){
+
+            //filter筛选出与指定表达式匹配的元素集合,not表示删除选中的，(":not(:checked)").length===0表示没有选中的为0，也就是全选中了
+             $checkedAllbox.prop("checked",$items.filter(":not(:checked)").length===0)
+           })
+    </script>
+</body>
+</html>

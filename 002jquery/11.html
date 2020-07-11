@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电影排行榜</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #box{
+            width: 300px;
+            height: 400px;
+            margin: 50px auto;
+            border: 1px solid black;
+            }
+            #box>h1{
+                font-size: 20px;
+                color: deeppink;
+                border-bottom: 1px dashed grey;
+            }
+            ul>li{
+                list-style: none;
+                border: 1px dashed grey;
+            }
+            ul>li:nth-child(-n+3) span{
+                background-color:deeppink;
+            }
+           span{
+                display:inline-block;
+                width: 20px;
+                height: 20px;
+                background-color:grey;
+                margin: 10px;
+                color: #ccc;
+                text-align: center;               
+            }
+            .content{
+                overflow: hidden;
+                display: none;
+            }
+            .content>img{
+                width: 130px;
+                height: 90px;
+                float: left;
+            }
+            .content>p{
+                width: 150px;
+                height: 100px;
+                font-size: 12px;
+                line-height: 15px;
+                float: right;
+            }
+            .current .content{
+                display: block;
+            }
+    </style>
+    <script src="jquery-1.6.1.min.js"></script>
+    <script>
+        $(function(){
+
+           /*$("li").mouseenter(function () {
+                $(this).addClass("current");
+            });
+           $("li").mouseleave(function () {
+                $(this).removeClass("current");
+            });*/
+
+            $("li").hover(function(){
+                 $(this).addClass("current");
+             },function(){
+                $(this).removeClass("current");
+             })
+        })
+    
+    </script>
+
+</head>
+<body>
+    <div id="box">
+        <h1>电影排行榜</h1>
+        <ul>
+            <li ><span>1</span>电影名称
+                <div class="content"><img src="images1/1.jpg" alt=""><p>简介：巨大机会非常不俄海军萨利无法恢复你吃吧巍峨u啥卡娃球球合伙创办位于温江区阿萨的角度外汇储备讲座卡i巍峨u先可就是大家伙大赛度的和维护数据仓库</p></div>
+            </li>
+             <li ><span>2</span>电影名称
+                <div class="content"><img src="images1/1.jpg" alt=""><p>简介：巨大机会非常不俄海军萨利无法恢复你吃吧巍峨u啥卡娃球球合伙创办位于温江区阿萨的角度外汇储备讲座卡i巍峨u先可就是大家伙大赛度的和维护数据仓库</p></div>
+            </li>
+             <li ><span>3</span>电影名称
+                <div class="content"><img src="images1/1.jpg" alt=""><p>简介：巨大机会非常不俄海军萨利无法恢复你吃吧巍峨u啥卡娃球球合伙创办位于温江区阿萨的角度外汇储备讲座卡i巍峨u先可就是大家伙大赛度的和维护数据仓库</p></div>
+            </li>
+            <li ><span>4</span>电影名称
+                <div class="content"><img src="images1/1.jpg" alt=""><p>简介：巨大机会非常不俄海军萨利无法恢复你吃吧巍峨u啥卡娃球球合伙创办位于温江区阿萨的角度外汇储备讲座卡i巍峨u先可就是大家伙大赛度的和维护数据仓库</p></div>
+            </li>
+             <li ><span>5</span>电影名称
+                <div class="content"><img src="images1/1.jpg" alt=""><p>简介：巨大机会非常不俄海军萨利无法恢复你吃吧巍峨u啥卡娃球球合伙创办位于温江区阿萨的角度外汇储备讲座卡i巍峨u先可就是大家伙大赛度的和维护数据仓库</p></div>
+            </li>
+             <li ><span>6</span>电影名称
+                <div class="content"><img src="images1/1.jpg" alt=""><p>简介：巨大机会非常不俄海军萨利无法恢复你吃吧巍峨u啥卡娃球球合伙创办位于温江区阿萨的角度外汇储备讲座卡i巍峨u先可就是大家伙大赛度的和维护数据仓库</p></div>
+            </li>
+        </ul>
+    </div>
+    
+</body>
+</html>

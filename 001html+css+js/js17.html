@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    <script>//可以为for循环创建一个label，标识当前循环
+        outer:
+        for(var i=0;i<5;i++){
+          
+            for(var j=0;j<5;j++){
+                document.write("  happy"+i);
+                break outer;//这样结束的就是外部循环而不是距离它最近的
+            }
+            document.write("@happy<br/>"+j);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件的绑定</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        body{
+            height: 2000px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+
+          var box=document.getElementById("box");
+
+          box.onmousewheel=function(event){
+           if(event.wheelDelta>0||event.detail<0){
+            box.style.height=box.clientHeight-10+"px";
+           }else{
+            box.style.height=box.clientHeight+10+"px";
+           }
+
+           //取消滚轮默认行为，防止浏览器滚轮跟着滚
+           if(event.preventDefault){
+            event.preventDefault();
+           }
+           return false;
+            }
+            //因为 box.onmousewheel=function(){   }，所以第三个参数直接用box.onmousewheel代替
+            bind(box,"DOMMouseScroll",box.onmousewheel);
+
+            function bind(obj,eventStr,callback){
+                obj.addEventListener(eventStr,callback,false);
+            }
+         
+        }
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

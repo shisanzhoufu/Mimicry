@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM查询练习，全选</title>
+
+        <script> 
+           window.onload=function(){
+
+            var items=document.getElementsByName("items");
+             var ck=document.getElementById("ck");
+            // 全选按钮
+            var btn1=document.getElementById("btn1");
+            btn1.onclick=function(){
+
+            // 获取四个复选框的name
+            
+
+            //获得的是所有name值为items的元素的数组，需要遍历
+            for(var i=0;i<items.length;i++){
+
+            //设置为全选状态,将checked的属性值设为true
+             items[i].checked=true;
+         }
+         ck.checked=true;
+             };
+
+
+             //全不选按钮
+            var btn2=document.getElementById("btn2");
+            btn2.onclick=function(){
+           
+            for(var i=0;i<items.length;i++){
+             items[i].checked=false;
+            }  
+            ck.checked=false;      
+};
+
+            //反选按钮
+            var btn3=document.getElementById("btn3");
+            btn3.onclick=function(){
+            for(var i=0;i<items.length;i++){
+             if(items[i].checked){
+                items[i].checked=false;
+                ck.checked=false;
+             }else{
+                items[i].checked=true;
+                ck.checked=true;
+
+                //以上的判断可以用items[i].checked=!items[i].checked;代替
+             }
+            }  
+            };
+
+            //提交按钮
+            var btn4=document.getElementById("btn4");
+            btn4.onclick=function(){
+            for(var i=0;i<items.length;i++){
+                if(items[i].checked){
+                    alert(items[i].value);
+                }
+            }
+            };
+
+           
+            ck.onclick=function(){
+                 for(var i=0;i<items.length;i++){
+                    /* if(ck.checked){
+                    items[i].checked=true;
+                }else{
+                    items[i].checked=false;
+                }*/
+                //以上的判断可简写为
+                items[i].checked=ck.checked;
+
+                //在事件的响应函数中，给谁绑定，this就是谁
+                // items[i].checked=this.checked;
+                 }
+               
+            }
+
+            //最外面的循环表示为4个复选框都绑定单击相应函数判断是否选中
+            for(var i=0;i<items.length;i++){
+
+                // 复选框单击事件
+                items[i].onclick=function(){
+
+                    // 默认为true
+                     ck.checked=true;
+                    // 遍历items
+                    for(var j=0;j<items.length;j++)
+
+                        // 如果有未响应的复选框，则ck不选中
+                    if(!items[j].checked){
+                        ck.checked=false;
+                        break;
+                  }
+            };
+        }
+    }      
+        </script>
+</head>
+<body>
+        你爱好的运动是：
+    <input type="checkbox" id="ck">全选/全不选
+    <br/>
+    <input type="checkbox" name="items" value="足球"  id="ck1">足球
+    <input type="checkbox"name="items" value="篮球" id="ck2">篮球
+    <input type="checkbox" name="items"value="排球" id="ck3">排球
+    <input type="checkbox" name="items"value="羽毛球" id="ck4">羽毛球
+    <br/>
+    <button id="btn1">全选</button>
+    <button id="btn2">全不选</button>
+    <button id="btn3">反选</button>
+    <button id="btn4">提交</button>
+</body>
+</html>

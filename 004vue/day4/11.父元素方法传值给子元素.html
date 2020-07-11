@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul >
+            <!-- 将父组件修改cname的方法传给子组件 -->
+            <!-- 方法一：添加:action='choseEvent' -->
+            <parent v-for='item in list'  :school='item' ></parent>
+        </ul>
+        <h2>您选择的学校是：{{cname}}</h2>
+    </div>
+    <script>
+
+        Vue.component('parent',{
+            props: ['school','action'],
+            template:`
+            <li>
+                <h2>{{school.id}}学校：{{school.name}}</h2>
+                <input type="button" value="选择" @click="choseSchool(school.name)">
+            </li>
+            `,
+            methods:{
+                choseSchool:function(name){
+                console.log(name)
+                //子组件可以使用 $emit 触发父组件的自定义事件并将获取到的name传递过去
+                // this.$emit('chose', name)
+                // console.log(this.action)
+                // 方法一：this.action(name)
+                this.$parent.choseEvent(name)
+            }
+            }
+            
+        });
+        var vm=new Vue({
+           el:'#app',
+           data:{
+            cname:'',
+               list:[
+                   {id:1,name:'清华'},
+                   {id:2,name:'北大'},
+                   {id:3,name:'云大'}
+               ]
+           },
+           methods:{
+            choseEvent(data){
+                this.cname=data
+            }
+           }
+        });
+    </script>
+</body>
+
+</html>

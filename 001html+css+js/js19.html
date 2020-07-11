@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- <script>
+    function isOu(num){
+    //方法一
+      /*  if(num%2==0){
+        return true;
+    }else{
+        return false;
+    }*/
+    //方法二
+    return num%2==0;
+    }
+    var result=console.log(isOu(5));
+    </script> -->
+    <script>
+        function sayHello(o){
+                
+                //console.log("o = "+o);
+                console.log("我是"+o.name+",今年我"+o.age+"岁了,"+"我是一个"+o.gender+"人"+",我住在"+o.address);
+            }
+            
+            //sayHello("猪八戒",28,"高老庄","男");
+            //创建一个对象
+            var obj = {
+                name:"孙悟空",
+                age:18,
+                address:"花果山",
+                gender:"男"
+                
+            };
+            sayHello(obj);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

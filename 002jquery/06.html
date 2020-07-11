@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+   
+   <script>
+    window.onload=function(){
+   
+        // 点击确认，弹出文本框内容
+   var jsbtn=document.getElementById("jsbtn");
+   var input=document.getElementsByTagName("input");
+   jsbtn.onclick=function(){
+       alert(input[0].value);
+   }
+   } 
+</script>
+<script src="jquery-1.6.1.min.js"></script>
+<script>
+    $(function(){
+         $("#jqbtn").click(function(){
+             var username=$("#input").val();
+            alert(username);
+        });
+    });
+    
+</script>   
+</head>
+<body>
+    用户名：<input type="text" id="input">
+    <button id="jsbtn">确定js</button>
+    <button id="jqbtn">确定jq</button>
+
+</body>
+</html>

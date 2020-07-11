@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			class Person{
+				constructor(name) {
+				   this.name=name;
+				}
+				sayHello(){
+					console.log(this.name);
+				}
+			}
+			var person=new Person("jack");
+			console.log(person.name);
+			person.sayHello(person.name);
+		</script>
+	</body>
+</html>

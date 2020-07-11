@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单案例总结</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        fieldset{
+            margin: 50px auto;
+            width: 500px;
+            padding: 10px;
+        }
+        fieldset>meter,fieldset>input{
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: none;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>学生档案</legend>
+            <label for="username">姓名：</label>
+            <input type="text" name="username" id="username" placeholder="请输入用户名">
+             <label for="password">密码：</label>
+            <input type="password" name="password" id="password" placeholder="请输入密码">
+             <label for="tel">电话：</label>
+            <input type="tel" name="userphone" id="userphone" placeholder="请输入电话号码">
+            <label for="">所属学院：</label>
+            <input type="text" name="collage" list="collage" placeholder="请选择">
+            <datalist id="collage">
+                
+            <option value="软件学院"></option>
+            <option value="信工学院"></option>
+            <option value="体育学院"></option>
+            </datalist>
+            <label for="score">成绩：</label>
+            <input type="number" max="100" min="0" value="0" id="score">
+            <label for="">基础水平：</label>
+            <meter id="level" max="100" min="0" high="90" low="59"></meter>
+            <label for="inTime">入学日期：</label>
+            <input type="date" id="inTime" name="inTime">
+            <label for="outTime">毕业日期：</label>
+            <input type="date" id="outTime" name="outTime">
+            <input type="submit" value="提交">
+        </fieldset>
+    </form>
+    <script>
+        document.getElementById('score').oninput=function(){
+            document.getElementById('level').value=this.value;
+        }
+    </script>
+</body>
+</html>

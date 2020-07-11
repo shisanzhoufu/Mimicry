@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型函数</title>
+    <script>
+        function MyClass(){
+
+        }
+        MyClass.prototype.name="原型的name";
+        var mc=new MyClass;
+        mc.age=18;
+        console.log(mc.name);
+        //用in检查是否含有某属性，对象中没有原型中有也会返回true
+        console.log("name" in mc);
+        //hasOwnproperty可以检查属性，对象中含有该属性才返回true
+        console.log(mc.hasOwnProperty("age"));
+
+         console.log(mc.hasOwnProperty("hasOwnProperty"));
+         //可以用__proto__查看原型对象
+         console.log(mc.__proto__.hasOwnProperty("hasOwnProperty"));
+         //原型也有对象，两个__proto__查看原型的原型中是否含有该属性
+         console.log(mc.__proto__.__proto__.hasOwnProperty("hasOwnProperty"));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

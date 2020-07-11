@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;padding: 0;
+        }
+        ul{
+            width: 400px;
+            height: 250px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            list-style: none;
+        }
+        ul>li{
+            float: left;
+            width: 100px;
+            height: 50px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        ul>li>span{
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background:url("images/bg.png") no-repeat 0 0;
+        }
+    </style>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            $("li").each(function(index,ele){
+                var $url="url(\"images/bg.png \") no-repeat 0"+(index*-24)+"px";
+                $(this).children("span").css("background",$url);
+            })
+        })
+    </script>
+</head>
+<body>
+    <ul>
+        <li><span></span><p>百度</p></li>
+        <li><span></span><p>百度</p></li>
+        <li><span></span><p>百度</p></li>
+        <li><span></span><p>百度</p></li>
+        <li><span></span><p>百度</p></li>
+        <li><span></span><p>百度</p></li>
+        <li><span></span><p>百度</p></li>
+        <li><span></span><p>百度</p></li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>键盘事件，div移动</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            //使div根据键盘键上下左右移动
+            var box=document.getElementById("box");
+            var speed=10;
+            var dir;
+
+            document.onkeydown=function(event){
+                if(event.ctrlKey){
+                    speed=100;
+                }else{
+                    speed=10;
+                }
+
+                // 定义dir保存按键按下的值
+                dir=event.keyCode;
+                 }
+                 // 松开键盘，移动停止
+                document.onkeyup=function(){
+                    dir=0;
+                }
+               
+               // 设置一个定时器，控制盒子运行方向，解决第一次和第二次移动之间有间隔的问题
+                  setInterval(function(){
+                        if(dir===38){
+
+                    // offsetTop指元素距离上方或上层控件的位置，整型，单位像素
+                    box.style.top=box.offsetTop-speed+"px";
+                }
+                else if(dir===39){
+                     box.style.left=box.offsetLeft+speed+"px";
+                    }
+                    else if(dir===37){
+                        box.style.left=box.offsetLeft-speed+"px"; 
+                    }else if(dir===40){
+                        box.style.top=box.offsetTop+speed+"px"; 
+                    }
+        },30);
+        }
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

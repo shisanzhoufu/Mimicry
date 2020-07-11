@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标坐标确定</title>
+    <style>
+        #box1{
+            border: 1px solid black;
+            width: 300px;
+            height: 100px;
+        }
+        #box2{
+            margin-top: 10px;
+            border: 1px solid black;
+            width: 300px;
+            height: 40px;
+        }
+    </style>
+    <script>
+        window.onload=function(event){
+            var box1=document.getElementById('box1');
+            var box2=document.getElementById('box2');
+            box1.onmousemove=function(){
+
+            // 为了兼容ie8所以加了window
+              var  x=window.event.clientX;
+              var y=window.event.clientY;
+                box2.innerHTML=("X 坐标: " + x + ", Y 坐标: " + y);
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时器练习</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color:red;
+            position: absolute;
+            left: 0;
+        }
+        #box2{
+            width: 100px;
+            height: 100px;
+            background-color:blue;
+            position: absolute;
+            left: 0;
+            top:150px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var btn=document.getElementById("btn");
+            var btn1=document.getElementById("btn1");
+            var btn2=document.getElementById("btn2");
+            var box1=document.getElementById("box1");
+            var box2=document.getElementById("box2");
+            // var timer;
+
+
+            btn.onclick=function(){
+              move(box1,"left",800,10);
+        }
+        btn1.onclick=function(){
+              move(box1,"left",0,10);
+        }
+        btn2.onclick=function(){
+              move(box2,"height",800,10,function(){
+                move(box2,"width",800,10,function(){
+                    move(box2,"height",100,10,function(){
+                    move(box2,"width",100,10,function(){
+                    
+                });
+                });
+                });
+              });
+            
+        }
+
+        // 读取样式
+        function getStyle(obj,name){
+                if(window.getComputedStyle){
+                  return  getComputedStyle(obj,null)[name];
+                }else{
+                    return obj.currentStyle[name];
+                }
+            }
+
+            // 创建一个动画函数
+            function move(obj,atrr,target,speed,callback){
+                //停止上一个计时器
+                clearInterval(obj.timer);
+
+                //判断speed的方向
+                //  定义一个变量curent即当前位置
+                // 当当前位置大于目标位置target时，speed为负值，向左移动
+               var curent=parseInt(getStyle(obj,atrr));
+               if(curent>target){
+                speed=-speed;
+               }
+
+                obj.timer=setInterval(function(){
+
+                   // 调用getStyle获取盒子属性值，通过parseInt转化为数值类型
+                   var oldValue= obj.style[atrr]=parseInt(getStyle(obj,atrr));
+                   var newValue=oldValue+speed;
+
+                   // 当大于或小于最大最小值时，让newValue等于最大最小值
+                   // 当速度小于0即负数，表示盒子左移，当newValue<target（设定的最小值）时，让newValue=最小值
+                   if((speed<0&&newValue<target)||(speed>0&&newValue>target)){
+                    newValue=target;
+                   }
+
+                   obj.style[atrr]=newValue+"px";
+
+                   // 当newValue等于最小值时，关闭定时器
+                   if(newValue==target){
+                    clearInterval(obj.timer);
+                    callback&&callback();
+                }
+                
+                },30);
+
+
+        }
+            }
+            
+            
+    </script>
+</head>
+<body>
+    <button id="btn">盒子向右移动</button>
+    <button id="btn1">盒子向左移动</button>
+    <button id="btn2">测试</button>
+    <br>
+    <br>
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+</html>

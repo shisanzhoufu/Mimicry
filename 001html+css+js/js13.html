@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>if练习</title>
+<script>//奖励选择
+    while(true){//这个while函数实现了输入错误后可以继续输入
+     var score=prompt("请输入您的成绩：");
+     if(score<100&&score>=0){
+      break;
+     }
+      alert("请输入一个正确的成绩！！！"); 
+   }
+      if(score==100){
+        alert("你能得到一个bmw!")
+    }else if(score<100&&score>=80){
+        alert("你能得到一个iphone!");
+    }
+    else if(score<80&&score>=60){
+        alert("你能得到一个apple!");
+    }else if(score>0&&score<60){
+        alert("你能得到一个棍子！！");
+    }
+   
+</script>
+  <!-- <script>//数字排序
+      var a=+prompt("请输入数字1：");//类型转换
+      var b=+prompt("请输入数字2：");
+      var c=+prompt("请输入数字3：");
+      var max;
+      if(a>b){
+          max=a;
+          if(max<c){
+              max=c;
+              alert(max+">"+a+">"+b);
+          }else if(max>c>b){
+              alert(max+">"+c+">"+b);
+          }else{
+              alert(max+">"+b+">"+c)
+          }
+      }else
+      {
+          max=b;
+          if(max<c){
+              max=c;
+              alert(max+">"+b+">"+a);
+          }else if(max>c>a){
+              alert(max+">"+c+">"+a);
+          }else{
+              alert(max+">"+a+">"+c)
+          } 
+      }
+  </script> -->
+</head>
+<body>
+    
+</body>
+</html>

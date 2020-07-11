@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象控制</title>
+</head>
+<body>
+    <div id="pid">divp</div>
+    <p name="pn">hello</p>
+    <p name="pn">hello</p>
+    <p name="pn">hello</p>
+    <p name="pn">hello</p>
+    <script>
+        function get(){
+            var count=document.getElementsByName("pn");
+            alert(count.length);
+            var a=count[2];
+            a.innerHTML="world";
+        }
+        get();
+        function getparent(){
+            var div=document.getElementById("pid");
+           alert(div.parentNode.nodeName);
+        }
+        getparent();
+        function createNode(){
+            var body=document.body;
+            var input=document.createElement("input");
+            input.type="button";
+            input.value="anniu";
+            body.appendChild(input);
+        }
+        createNode();
+        function size(){
+            var width=document.documentElement.offsetWidth||document.body.offsetWidth;
+            var height=document.documentElement.offsetHeight||document.body.offsetHeight;
+            alert(width+"  "+height);
+        }
+        size();
+    </script>
+</body>
+</html>

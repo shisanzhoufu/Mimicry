@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>key的使用</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+     <label for="">Id: <input type="text" v-model="id"></label>
+            <label for="">Name: <input type="text" v-model="name"></label>
+            
+            <input type="button" value="添加" @click="add">
+        
+        <p  v-for="item in list" :key="item.id">
+        <input type="checkbox">{{item.id}}---------{{item.name}}
+        </p>
+    </div>
+
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                list:[
+                {id:1,name:"jack"},
+                {id:2,name:"mary"},
+                {id:3,name:"tom"}
+                ],
+                name:'',
+                id:''
+            },
+            methods:{
+                add(){
+                    this.list.unshift({id:this.id,name:this.name})
+                }
+            }
+        });
+    </script>
+</body>
+</html>

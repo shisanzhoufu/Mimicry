@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽</title>
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            position: absolute;
+        }
+        #box2{
+             width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 200px;
+            top: 200px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var box1 = document.getElementById("box1");
+            var box2 = document.getElementById("box2");
+            //开启box1的拖拽
+                drag(box1);
+                //开启box2的
+                drag(box2);
+
+            // 拖拽函数
+            function drag(obj){
+                // 鼠标点击事件
+            obj.onmousedown=function(event){
+
+                if(obj.setCapture){
+                        obj.setCapture();
+                    }
+
+                event = event || window.event;
+                    //div的偏移量 鼠标.clentX - 元素.offsetLeft
+                    //div的偏移量 鼠标.clentY - 元素.offsetTop
+                    var ol = event.clientX - obj.offsetLeft;
+                    var ot = event.clientY - obj.offsetTop;
+
+                // 鼠标移动事件
+                document.onmousemove=function(event){
+                    event = event || window.event;
+                   var left = event.clientX - ol;
+                        var top = event.clientY - ot;
+                        
+                        //修改box1的位置
+                        obj.style.left = left+"px";
+                        obj.style.top = top+"px";
+              
+
+            };
+
+            // 鼠标移开事件
+            document.onmouseup=function(){
+
+                // 鼠标松开，位置固定
+               document.onmousemove = null;
+                //取消document的onmouseup事件
+                document.onmouseup = null;
+                //当鼠标松开时，取消对事件的捕获
+                        obj.releaseCapture && obj.releaseCapture();
+            };
+                return false;
+            };    
+              };
+        }
+    </script>
+</head>
+<body>
+    <div id="box1"></div>
+        
+        <div id="box2"></div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+    <style>
+        .div{
+            width: 100px;
+            height: 100px;
+            background-color: #cfc;
+        }
+    </style>
+</head>
+<body>
+    <div class="div" onmouseout="onout(this)" onmouseover="onover(this)">       
+    </div>
+    <form action="">
+        <input type="text" onchange="change(this)">
+         <input type="text" onselect="slect(this)">
+    </form>
+    <script>
+        function onover(og){
+            og.innerHTML="hello";
+        }
+        function onout(og){
+og.innerHTML="word";
+        }
+    </script>
+    <script>
+        function change(bj){
+            alert("change");
+        }
+    </script>
+    <script>
+        function slect(aj){
+            aj.style.background="red";
+        }
+    </script>
+</body>
+</html>

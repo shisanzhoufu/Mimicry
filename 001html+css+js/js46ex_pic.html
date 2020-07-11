@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片轮播</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #box{
+            width: 320px;
+            height: 200px;
+            margin: 50px auto;
+            background-color: #cfc;
+            overflow: hidden;
+            padding: 10px 0px;
+            position: relative;
+        }
+        img{
+            width: 300px;
+            height: 200px;
+        }
+        #imagList{
+            /*width: 1600px;*/
+            list-style:none;
+            position: absolute;
+        }
+        #imagList li{
+            float:  left;
+            margin:0  10px;
+        }
+        #navDiv{
+            position: absolute;
+            bottom: 10px;
+        }
+        #navDiv a{
+            float: left;
+            background-color:red;
+            opacity:0.5;
+            width: 10px;
+            height: 10px;
+            margin-left:  5px;
+        }
+        #navDiv a:hover{
+            background-color:blue;
+            opacity:0.5;
+        }
+    </style>
+    <script src="tool.js"></script>
+    <script>
+        window.onload=function(){
+            var imagList=document.getElementById("imagList");
+            var imgArr=document.getElementsByTagName("img");
+            imagList.style.width=320*imgArr.length+"px";
+            var navDiv=document.getElementById("navDiv");
+            var box=document.getElementById("box");
+            var a=document.getElementsByTagName("a");
+
+            
+
+            navDiv.style.left=(box.offsetWidth-navDiv.offsetWidth)/2+"px";
+            var index=0;
+             
+            a[index].style.backgroundColor="blue";
+             for(var i=0;i<a.length;i++){
+                a[i].num=i;
+
+                a[i].onclick=function(){
+                    clearInterval(timer);
+                    index=this.num;
+                    // imagList.style.left=(-320*index)+"px";
+                    setA();
+                    // 
+                    // auto();
+                    move(imagList,"left",-320*index,20,function(){
+                    auto();
+                    });
+                }
+             }
+
+             function setA(){
+
+                if(index>=a.length-1){
+                    index=0;
+                    imagList.style.left=0;
+                }
+                for(var i=0;i<a.length;i++){
+                a[i].style.backgroundColor="";
+                }
+                a[index].style.backgroundColor="blue";
+             }
+
+             var timer;
+            function  auto(){
+
+          timer=setInterval(function(){
+          index++;
+            index%=a.length;
+            move(imagList,"left",-320*index,20,function(){setA();});
+            
+        },2000);
+        }
+        }
+    </script>
+</head>
+<body>
+
+    <div id="box">
+        
+        <ul id="imagList">
+            <li><img src="images1/1.jpg" alt=""></li>
+            <li><img src="images1/2.jpg" alt=""></li>
+            <li><img src="images1/3.jpg" alt=""></li>
+            <li><img src="images1/4.jpg" alt=""></li>
+            <li><img src="images1/5.jpg" alt=""></li>
+            <li><img src="images1/1.jpg" alt=""></li>
+        </ul>
+        <div id="navDiv">
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+            </div>
+    </div>
+
+</body>
+</html>

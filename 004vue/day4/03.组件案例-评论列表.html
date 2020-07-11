@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/vue.js"></script>
+    <link rel="stylesheet" href="./lib/bootstrap-4.4.1-dist/css/bootstrap.css">
+</head>
+
+<body>
+    <div id="app">
+        <cmt-box @func='loadComments'></cmt-box>
+        
+        <ul class="list-group">
+            <li class="list-group-item" v-for="(item,index) in list" :key="index">
+
+
+
+                <span class="badge">评论人：{{item.user}}</span>
+                {{item.content}}
+            </li>
+        </ul>
+        
+    </div>
+    <template id="tmp1">
+        <div>
+            <div class="form-group">
+                <label for="">评论人：</label>
+                <input type="text" class="form-control" v-model="user">
+            </div>
+
+            <div class="form-group">
+                <label for="">评论内容：</label>
+                <textarea class="form-control" v-model="content"></textarea>
+            </div>
+
+            <div class="form-group">
+              
+                <input type="button" value="发表评论" class="btn btn-primary" @click="postComment">
+            </div>
+        </div>
+    </template>
+
+
+    <script>
+
+        var commentBox={
+            data(){
+                return{
+                    user:'',
+                    content:''
+                }
+            },
+            template:'#tmp1',
+            methods:{
+            postComment(){//发表评论的方法
+
+            var comment={id:Date.now(),user:this.user,content:this.content}
+            //获取全部评论数据
+            var list=JSON.parse(localStorage.getItem('cmts') || '[]')
+            //插入评论
+            list.unshift(comment)
+            //重新渲染全部评论
+            localStorage.setItem('cmts',JSON.stringify(list))
+            this.user=this.content=''
+            this.$emit('func')
+            }
+        }
+        }
+       
+        var vm=new Vue({
+           el:'#app',
+           data:{
+               list:[
+                   {id:Date.now(),user:'李白',content:'长安一片月，万户捣衣声'},
+                   {id:Date.now(),user:'杜甫',content:'无边落木萧萧下，不尽长江滚滚来'},
+                   {id:Date.now(),user:'辛弃疾',content:'蓦然回首,那人却在灯火阑珊处'}
+               ]
+           },
+           created () {
+            this.loadComments()
+           },
+           methods:{
+               loadComments(){
+            var list=JSON.parse(localStorage.getItem('cmts') || '[]')
+            this.list=list
+               }
+           },
+           components: {
+           
+                'cmt-box':commentBox
+            
+           }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片切换</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            }
+            #outer{
+                width: 500px;
+                height: 250px;
+                background-color: #ccf;
+                padding: 10px;
+                margin: 0 auto;
+                margin-top: 50px; 
+                text-align: center;
+            }
+            img{
+                width: 500px;
+                height: 200px;
+            } 
+    </style>
+</head>
+<body>
+    <div  id="outer">
+       <img src="images1/1.jpg" alt="black" >
+        <button id="btn1">上一张</button>
+        <button id="btn2">下一张</button>
+        <p id="info"></p>
+    </div>
+    <script>
+        //创建一个数组保存图片路径
+        
+        var arr=["images1/1.jpg","images1/2.jpg","images1/3.jpg","images1/4.jpg"] ;
+       
+        //创建一个变量，保存当前显示的图片索引
+       var index=0;
+
+       //获取提示信息
+       var info=document.getElementById('info');
+
+       //设置提示按钮
+       
+        info.innerHTML="一共"+arr.length+"张图片，当前第"+(index+1)+"张";
+
+        //点击按钮切换图片,即修改src，先获取按钮和图片
+        var last=document.getElementById('btn1')
+        var next=document.getElementById('btn2')
+        var img=document.getElementsByTagName('img')[0];
+        last.onclick=function(){
+            
+            //切换到上一张，index自减
+            index--;
+            if(index<0){
+                index=arr.length-1;
+            }
+             img.src=arr[index];
+
+             //当点击按钮之后，提示信息刷新
+             
+              info.innerHTML="一共"+arr.length+"张图片，当前第"+(index+1)+"张";
+        };
+        next.onclick=function(){
+            //切换到下一张，index自增1
+            index++;
+            if(index>arr.length-1){
+                index=0;
+            }
+            img.src=arr[index];
+            info.innerHTML="一共"+arr.length+"张图片，当前第"+(index+1)+"张";
+        };
+    </script>
+</body>
+</html>

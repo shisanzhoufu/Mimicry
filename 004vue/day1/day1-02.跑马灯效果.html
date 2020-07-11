@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跑马灯效果</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="跑起来" v-on:click="lang">
+        <input type="button" value="暂停" @click="stop">
+        <div v-cloak>{{msg}}</div>
+    </div>
+        
+        <script>
+            var vm =new Vue({
+                el: '#app',
+                data:{
+                    msg: '唯有热爱可抵岁月漫长～～～',
+                    intervalId : null
+                },
+                methods: {
+                   
+                    lang(){
+                        clearInterval(this.intervalId)
+                        this.intervalId=  setInterval(()=>{
+                        var start=this.msg.substring(0,1)
+                        var end=this.msg.substring(1)
+                        this.msg=end+start
+                        },400)
+                    },
+                    stop() {
+                        clearInterval(this.intervalId)
+                        this.intervalId=null;
+                    }
+                }
+            })
+
+        /* 1.给按钮绑定点击事件 v-on
+            2.事件处理函数
+                获取字符串，截取首字  substring 放到最后一个位置
+            3.设置定时器，让字符串一直操作，知道点击停止按钮。*/
+        </script>
+</body>
+</html>

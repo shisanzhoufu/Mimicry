@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 600px;
+            height: 161px;
+            border: 1px solid black;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        div>ul{
+            list-style: none;
+            width: 1800px;
+            height: 161px;
+        }
+        ul>li{
+            float: left;
+        }
+    </style>
+     <script src="js/jquery-1.12.4.js"></script>
+     <script>
+         $(function(){
+
+            var offset=0;
+            var timer;
+            function autoPaly(){
+                 timer=setInterval(function(){
+                offset+=-10;
+                if(offset<=-1200){
+                    offset=0;
+                }
+                $("ul").css("marginLeft",offset);
+            },50);
+            }
+            autoPaly();
+
+            $("li").hover(function(){
+                clearInterval(timer);
+               $(this).siblings().fadeTo(100, 0.5);
+               $(this).fadeTo(100, 1);
+            },function(){
+                autoPaly();
+                $("li").fadeTo(100, 1);
+            });
+         });
+     </script>
+</head>
+<body>
+    <div>
+        <ul>
+        <li><img src="images/a.jpg" alt=""></li>
+        <li><img src="images/b.jpg" alt=""></li>
+        <li><img src="images/c.jpg" alt=""></li>
+        <li><img src="images/d.jpg" alt=""></li>
+        <li><img src="images/a.jpg" alt=""></li>
+        <li><img src="images/b.jpg" alt=""></li>
+    </ul>
+    </div>
+</body>
+</html>

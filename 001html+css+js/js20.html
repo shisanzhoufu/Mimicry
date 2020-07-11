@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作用域</title>
+ <!--    <script>
+     var a=123;
+     function fun(){
+         alert(a);
+     }
+     fun();
+ </script> -->
+<!--  <script>
+    var a=123;
+    function fun(){
+       alert(a);
+       var  a=567;
+    }
+    fun();  
+    alert(a);
+</script> -->
+<script>
+    var a=123;
+    function fun(){
+        alert(a);//调用的是上面的a
+        a= 456;//全局变量
+    }
+    fun();//输出123
+    alert(a);//输出456
+</script>
+</head>
+<body>
+    
+</body>
+</html>

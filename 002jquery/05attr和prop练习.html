@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05attr和prop练习.html</title>
+    <script src="jquery-1.6.1.min.js"></script>
+    <script>
+        $(function(){
+             var btn=document.getElementsByTagName("button")[0];
+        var text=document.getElementsByTagName("input")[0];
+        var nei=text.value;
+        var img=document.getElementsByTagName("img")[0];
+        btn.onclick=function(){
+            $("img").attr("src",nei);//在返回值不是true或false时选择用attr
+             // $("img").prop("src",nei);
+        }
+    });
+       
+    </script>
+    <style>
+        img{
+            width: 300px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text">
+    <button>切换图片</button>
+    <br>
+    <img src="images1/1.jpg" alt="">
+</body>
+</html>

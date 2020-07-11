@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标移动</title>
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /*开启绝对定位，否则移动操作无法完成*/
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+        var box1=document.getElementById("box1");
+        document.onmousemove = function(event){
+
+            // 处理兼容性以及鼠标定位点相对滚动页面的位置，获取滚动条的位置
+            var sl=document.body.scrollLeft||document.documentElement.scrollLeft;
+            var st=document.body.scrollTop||document.documentElement.scrollTop;
+            var  left=window.event.clientX;
+            var  top=window.event.clientY;
+            box1.style.left=left+sl+"px";
+            box1.style.top=top+st+"px";
+
+        }
+        }
+       
+    </script>
+</head>
+<body>
+    <div id="box1"></div>
+</body>
+</html>

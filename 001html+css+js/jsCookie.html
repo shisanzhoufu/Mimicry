@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//设置cookie
+			document.cookie="username=mary";
+			//设置有效时长
+			var oDate=new Date();
+			oDate.setDate(oDate.getDate()-1);
+			document.cookie="username=mary;expires="+oDate;
+			console.log(document.cookie);
+			//查询cookie
+			console.log(document.cookie);
+			//修改cookie
+			document.cookie="username=mary";
+			document.cookie="username=jack";
+			console.log(document.cookie);
+			//删除
+			var oDate=new Date();
+			oDate.setDate(oDate.getDate()-1);
+			document.cookie="username=mary;expires="+oDate;
+			console.log(document.cookie);
+		</script>
+	</body>
+</html>

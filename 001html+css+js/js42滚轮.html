@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>滚轮滚动事件</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color:red;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var box=document.getElementById("box");
+            box.onmousewheel=function(){
+                alert("d");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

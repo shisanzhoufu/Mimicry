@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        
+        <p>{{ msg | msgFormat}}</p>
+    </div>
+    <script>
+
+        // 定义一个全局过滤器
+        Vue.filter('msgFormat',function(msg){
+            return msg.replace('自由','爱情')
+        })
+
+        var vm=new Vue({
+           el:'#app',
+           data:{
+               msg:'曾经，我也是一个自由的人，向往自由是每个人的梦想吧，自由，自由'
+           },
+           methods:{}
+        });
+    </script>
+</body> 
+</html>
